@@ -28,7 +28,7 @@ public class BurndownController {
         burndownData.setEstimatedQuantity(50);
         burndownDataRepository.save(burndownData);
 
-        
+
         String sDate1="2020-10-31";
         Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(sDate1);
         String sDate2="2020-11-28";
