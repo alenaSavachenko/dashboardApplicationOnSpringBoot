@@ -22,7 +22,7 @@ public class TaskController {
         TaskData taskData=new TaskData();
 
         taskData.setKey("Test-1");
-        taskData.setProject("JiraDashboard");
+        //taskData.setProject("JiraDashboard");
         taskData.setStoryPoint(101);
         taskData.setAssigned("AlenaS");
         taskData.setDescription("create new class");
