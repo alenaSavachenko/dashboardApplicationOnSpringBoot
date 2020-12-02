@@ -20,11 +20,11 @@ public class TaskController {
     public List<TaskData> getTaskData() throws ParseException {
 
         TaskData taskData=new TaskData();
-        taskData.setId(1);
+
         taskData.setKey("Test-1");
         taskData.setProject("JiraDashboard");
-        taskData.setStoryPoint(100);
-        taskData.setAssigned("Alena");
+        taskData.setStoryPoint(101);
+        taskData.setAssigned("AlenaS");
         taskData.setDescription("create new class");
 
 
