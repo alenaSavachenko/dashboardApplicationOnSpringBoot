@@ -113,30 +113,18 @@ public static int getStatistics (String projectName, String taskName )
 
             }
 
-            fieldsObject.keys().forEachRemaining(key -> {
-                Object value = fieldsObject.get(key);
-               // System.out.println("key "+key);
+            if (fieldsObject.isNull("assignee"))
+            {
+                System.out.println("assignee is null");
+            }
 
-               // System.out.println("value "+value);
-              //  System.out.println("type "+value.getClass());
+            else
+            {
 
-                if (key.equals("description"))
-                {
+                String assignee=fieldsObject.getJSONObject("assignee").getString("displayName");
+                System.out.println("assignee "+assignee);
 
-                    //System.out.println("--------------------------------------");
-                    //System.out.println("key "+key);
-
-                    //System.out.println("value "+value);
-                    //System.out.println("type "+value.getClass());
-                }
-            });
-
-
-
-            //JSONObject assigneeObject=fieldsObject.getJSONObject("assignee");
-            //String assignee = String.valueOf(fieldsObject.getJSONObject("assignee").getString("displayName"));
-            //System.out.println("assignee-");
-            //fieldsObject.get("assignee");
+            }
 
             Task task=new Task();
             task.setTaskKey(issueKey);
