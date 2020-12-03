@@ -12,19 +12,27 @@ public class ClientController {
 
     @Autowired
     ClientScrumboard client;
+    @Autowired
+    TaskRepository repository;
 
     @GetMapping ("/saveAllIssuesInCustomerDb")
     @ResponseBody
-    public String xxx()
+    public String saveMyIssuesToDb()
     {
 
         List<Task> allIssues=client.getAllIssues();
 
         System.out.println("all issues:");
 
-        for (Task var:allIssues)
+        for (Task task:allIssues)
+        {
+            System.out.println(task.getTaskKey());
+            repository.save(task);
 
-            System.out.println(var.getTaskKey());
+
+        }
+
+
         return  "data saved!";
 
     }

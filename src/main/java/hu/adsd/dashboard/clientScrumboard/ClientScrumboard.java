@@ -73,10 +73,70 @@ public static int getStatistics (String projectName, String taskName )
             //System.out.println("json obj:"+jsonObject1);
 
             JSONObject jsonObjectIssue = issues.getJSONObject(i);
-            System.out.println("issue object:"+issues.get(i));
+           // System.out.println("issue object:"+issues.get(i));
 
             String issueKey = jsonObjectIssue.getString("key");
             System.out.println("key: "+issueKey);
+
+
+            JSONObject fieldsObject = jsonObjectIssue.getJSONObject("fields");
+
+            System.out.println("fields:");
+            System.out.println(fieldsObject);
+            // get categroy change date
+            String  statuscategorychangedate= fieldsObject.getString("statuscategorychangedate");
+            System.out.println("statuscategorychangedate");
+            System.out.println(statuscategorychangedate);
+
+            JSONObject project = fieldsObject.getJSONObject("project");
+            System.out.println("project: "+project);
+            String projectKey=fieldsObject.getJSONObject("project").getString("key");
+            System.out.println(" p key:"+ projectKey);
+            String projectName=fieldsObject.getJSONObject("project").getString("name");
+            System.out.println(" p name:"+ projectName);
+
+            JSONObject status = fieldsObject.getJSONObject("status");
+            System.out.println("status: "+status);
+           // String desc= fieldsObject.getString("description");
+           // System.out.println("desc:"+desc);
+
+            //JSONObject.NULL
+            if (fieldsObject.isNull("description"))
+            {
+                System.out.println("desc is null");
+            }
+
+            else
+            {
+                String desc= fieldsObject.getString("description");
+                System.out.println("description  "+desc);
+
+            }
+
+            fieldsObject.keys().forEachRemaining(key -> {
+                Object value = fieldsObject.get(key);
+               // System.out.println("key "+key);
+
+               // System.out.println("value "+value);
+              //  System.out.println("type "+value.getClass());
+
+                if (key.equals("description"))
+                {
+
+                    //System.out.println("--------------------------------------");
+                    //System.out.println("key "+key);
+
+                    //System.out.println("value "+value);
+                    //System.out.println("type "+value.getClass());
+                }
+            });
+
+
+
+            //JSONObject assigneeObject=fieldsObject.getJSONObject("assignee");
+            //String assignee = String.valueOf(fieldsObject.getJSONObject("assignee").getString("displayName"));
+            //System.out.println("assignee-");
+            //fieldsObject.get("assignee");
 
             Task task=new Task();
             task.setTaskKey(issueKey);
